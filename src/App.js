@@ -1,8 +1,12 @@
 import './App.css';
+import Layout from './components/Layout';
+import Main from './components/Main';
 
 function App() {
   return (
-      <h1>Film woohoo</h1>
+      <Layout>
+        <Main></Main>
+      </Layout>
   );
 }
 
