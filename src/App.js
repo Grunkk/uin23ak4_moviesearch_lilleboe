@@ -1,11 +1,11 @@
 import './App.css';
 import Layout from './components/Layout';
-import Main from './components/Main';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
       <Layout>
-        <Main></Main>
+        <SearchResults></SearchResults>
       </Layout>
   );
 }

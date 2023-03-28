@@ -1,14 +1,12 @@
-import { Outlet } from "react-router-dom";
-import MovieCard from "./MovieCard";
-
 export default function Layout({children}) {
     return(
         <>
-        <h1>James bond</h1>
-        <input></input>
+        <header>
+        <h1>Filmsøk!</h1>
+        </header>
         <main>
-            {children}
             
+            {children}
         </main>
 
         </>
