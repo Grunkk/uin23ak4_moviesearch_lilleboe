@@ -5,7 +5,6 @@ export default function Layout({children}) {
         <h1>Filmsøk!</h1>
         </header>
         <main>
-            
             {children}
         </main>
 

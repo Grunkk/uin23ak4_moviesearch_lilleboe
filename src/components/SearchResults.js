@@ -6,7 +6,6 @@ export default function SearchMovies(){
     const [printmovies, setPrint] = useState([])
     const [input, setInput] = useState("james-bond")
 
-
     const getMovies = async() =>{
         if(input.length >= 3){
 
@@ -16,17 +15,17 @@ export default function SearchMovies(){
         
         const moviesearch = data?.Search
 
-        const resultat = moviesearch.map((items => items?.imdbID))
+        const movieIds = moviesearch.map((items => items?.imdbID))
 
-        const realmovies = await Promise.all(resultat.map(id => (
+        const movieData = await Promise.all(movieIds.map(id => (
             fetch(`http://www.omdbapi.com/?apikey=80218af1&type=movie&i=${id}`)
         )))
 
-        const realrealmovies = await Promise.all(realmovies.map(movieresponse => (
+        const movies = await Promise.all(movieData.map(movieresponse => (
             movieresponse.json()
         )))
         
-        setPrint(realrealmovies)
+        setPrint(movies)
 
         console.log("data", data)
     }else{
@@ -46,10 +45,10 @@ export default function SearchMovies(){
     return(
         <> 
         <nav>
-         <input type="text" placeholder="james bond.." name="search" onChange={e => setInput(e.target.value)} />
+         <input className="myInput" type="text" placeholder="james bond.." name="search" onChange={e => setInput(e.target.value)} />
             <button onClick={getMovies}>Søk</button>
         </nav>    
-        <section class="movie-container" >
+        <section className="movie-container" >
             {printmovies?.map((item, index) =>(
                 <MovieCard key={index} title={item?.Title} img={item?.Poster} plot={item?.Plot} year={item?.Year} genre={item?.Genre} director={item?.Director} actors={item?.Actors}/>
             ))}
